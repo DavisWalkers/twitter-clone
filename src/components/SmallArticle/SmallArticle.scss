@@ -1,0 +1,13 @@
+.small-article__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.small-article__header {
+  width: 250px;
+
+  font-family: "SF Mono", sans-serif;
+  font-size: 18px;
+  text-align: center;
+}

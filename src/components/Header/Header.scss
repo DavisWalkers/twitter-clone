@@ -1,0 +1,30 @@
+@import "../../styles/utils/variables";
+
+.header {
+  box-shadow: 0px 1px 0px rgba($black, 0.16);
+}
+
+.header__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 127px;
+}
+
+.header__link {
+  font-family: 'New York Small', serif;
+  font-size: 20px;
+  line-height: 1.7;
+  text-transform: uppercase;
+
+  color: $black;
+}
+
+.header__link:not(:last-child) {
+  margin-right: 31px;
+}
+
+.header__link--active {
+  padding-bottom: 50px;
+  border-bottom: 2px solid $black;
+}
