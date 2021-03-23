@@ -1,11 +1,36 @@
+@import "../../styles/utils/variables";
+
 .small-article__wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.small-article__img-wrapper {
+  width: 300px;
+  height: 150px;
+  border-radius: 15px;
+  overflow: hidden;
+
+  background-color: $gray;
+}
+
+.small-article__img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
 .small-article__header {
-  width: 250px;
+  display: -webkit-box;
+  max-width: 250px;
+  max-height: 100px;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  
+  text-overflow: ellipsis;
 
   font-family: "SF Mono", sans-serif;
   font-size: 18px;

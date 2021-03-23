@@ -7,19 +7,44 @@
   align-items: center;
 }
 
+.big-article__img-wrapper {
+  width: 600px;
+  height: 600px;
+  border-radius: 15px;
+  overflow: hidden;
+
+  background-color: $gray;
+}
+
+.big-article__img {
+  height: 100%;
+  width: 100%;
+
+  object-fit: cover;
+}
+
 .big-article__header {
+  display: -webkit-box;
   margin: 0;
   margin-top: 40px;
   max-width: 460px;
+  max-height: 200px;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 
   text-align: center;
 }
 
 .big-article__description {
+  display: -webkit-box;
   margin: 0;
   margin-top: 20px;
   margin-bottom: 30px;
   max-width: 400px;
+  overflow: hidden;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
 
   text-align: center;
 

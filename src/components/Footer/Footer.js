@@ -17,7 +17,7 @@ export const Footer = (props) => {
           </li>
         </ul>
         <p className='footer__copyrights'>
-          © 2012–2020 Blog Co. 
+          © 2021 Blog Co. 
           <br />
           All rights reserved. 
         </p>
