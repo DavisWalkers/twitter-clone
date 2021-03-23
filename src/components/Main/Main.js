@@ -1,9 +1,29 @@
 import { Articles } from '../Articles/Articles';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom';
 
-export const Main = (props) => {
+const Post = () => {
+  return (
+    <div style={{height: '1000px'}}>
+      <h1>Hello</h1>
+    </div>
+  );
+};
+
+export const Main = () => {
   return (
     <main className='main'>
-      <Articles />
+        <Switch>
+          <Route exact path='/'>
+            <Articles />
+          </Route>
+          <Route path='/post'>
+            <Post />
+          </Route>
+        </Switch>
     </main>
   )
 }

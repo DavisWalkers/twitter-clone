@@ -8,8 +8,8 @@
 }
 
 .big-article__img-wrapper {
-  width: 600px;
-  height: 600px;
+  width: 300px;
+  height: 200px;
   border-radius: 15px;
   overflow: hidden;
 
@@ -20,6 +20,7 @@
   height: 100%;
   width: 100%;
 
+  text-indent: -10000px;
   object-fit: cover;
 }
 

@@ -11,6 +11,16 @@
   height: 127px;
 }
 
+.header__list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+
+  list-style: none;
+}
+
 .header__link {
   font-family: 'New York Small', serif;
   font-size: 20px;
@@ -20,11 +30,11 @@
   color: $black;
 }
 
-.header__link:not(:last-child) {
+.header__item:not(:last-child) {
   margin-right: 31px;
 }
 
 .header__link--active {
-  padding-bottom: 50px;
+  padding: 50px 0;
   border-bottom: 2px solid $black;
 }

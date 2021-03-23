@@ -1,16 +1,23 @@
+import { NavLink, BrowserRouter as Router } from 'react-router-dom';
 import './Header.scss';
 
-export const Header = (props) => {
+export const Header = () => {
   return (
-    <header className='header'>
-      <div className='container header__container'>
-        <nav className='header__nav'>
-          <a href='#' className='header__link header__link--active'>Blog</a>
-          {/* <a href='#' className='header__link'>About</a>
-          <a href='#' className='header__link'>Links</a> */}
-          <a href='#' className='header__link'>Write</a>
-        </nav>
-      </div>
-    </header>
-  )
-}
+    
+      <header className='header'>
+        <div className='container header__container'>
+          <nav className='header__nav'>
+            <ul className='header__list'>
+              <li className='header__item'>
+                <NavLink exact to='/' activeClassName='header__link--active' className='header__link'>Blog</NavLink>
+              </li>
+              <li className='header__item'>
+                <NavLink to='/post' activeClassName='header__link--active' className='header__link'>Write</NavLink>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+    
+  );
+};
