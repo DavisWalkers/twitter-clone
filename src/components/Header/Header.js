@@ -12,7 +12,7 @@ export const Header = () => {
                 <NavLink exact to='/' activeClassName='header__link--active' className='header__link'>Blog</NavLink>
               </li>
               <li className='header__item'>
-                <NavLink to='/post' activeClassName='header__link--active' className='header__link'>Write</NavLink>
+                <NavLink to='/write' activeClassName='header__link--active' className='header__link'>Write</NavLink>
               </li>
             </ul>
           </nav>

@@ -9,7 +9,7 @@ export const ArticlesLayout = () => {
   return (
     <div className='articles-layout'>
       {allPosts.map((value, index) => {
-        return <SmallArticle key={index} id={index} data={value} />
+        return <SmallArticle key={index} id={value.id} data={value} />
       })}
     </div>
   );

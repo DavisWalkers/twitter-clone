@@ -5,9 +5,20 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  transition: box-shadow .2s ease, padding .2s ease, margin .2s ease;
+}
+
+.big-article__wrapper:hover {
+  padding: 10px;
+  margin: -10px;
+  box-shadow: 2px 2px 2px 3px rgba($black, 0.16);
 }
 
 .big-article__img-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 300px;
   height: 200px;
   border-radius: 15px;

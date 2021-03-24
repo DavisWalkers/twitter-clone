@@ -6,7 +6,7 @@ export const fetchData = async (page) => {
       id: element.id,
       title: element.title,
       body: element.body,
-      img: ''
+      img: `https://picsum.photos/500/800?sig=${element.id}`
     } 
   });
   return posts;

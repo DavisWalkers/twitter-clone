@@ -1,17 +1,9 @@
 import { Articles } from '../Articles/Articles';
 import {
-  BrowserRouter as Router,
   Switch,
   Route
 } from 'react-router-dom';
-
-const Post = () => {
-  return (
-    <div style={{height: '1000px'}}>
-      <h1>Hello</h1>
-    </div>
-  );
-};
+import { PostPage } from '../PostPage/PostPage';
 
 export const Main = () => {
   return (
@@ -21,7 +13,7 @@ export const Main = () => {
             <Articles />
           </Route>
           <Route path='/post'>
-            <Post />
+            <PostPage />
           </Route>
         </Switch>
     </main>
