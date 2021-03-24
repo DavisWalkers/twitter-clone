@@ -1,4 +1,4 @@
-export const data = [
+export const initialData = [
   {
     id: 0,
     title: 'Fetching',
@@ -10,11 +10,5 @@ export const data = [
     title: 'Fetching',
     body: 'Fetching', 
     img: 'https://picsum.photos/500/800?sig=1'
-  },
-  {
-    id: 2,
-    title: 'Fetching',
-    body: 'Fetching', 
-    img: 'https://picsum.photos/500/800?sig=2'
   }
 ];

@@ -4,7 +4,8 @@ const RETRIEVE_POSTS = 'allPosts/retrievePosts';
 const LOAD_POSTS = 'allPosts/loadPosts';
 const UPPEND_POSTS = 'allPosts/uppendPosts';
 const SEND_REQUEST = 'allPosts/sendRequest';
-const GET_REQUEST = 'allPosts/getRequest';
+const GET_REQUEST_RETRIEVING = 'allPosts/getRequestRetrieving';
+const GET_REQUEST_LOADING = 'allPosts/getRequestLoading'
 
 const addPost = (post) => {
   return {
@@ -34,9 +35,15 @@ const sendRequest = (pageId) => {
   };
 };
 
-const getRequest = () => {
+const getRequestRetrieving = () => {
   return {
-    type: GET_REQUEST,
+    type: GET_REQUEST_RETRIEVING,
+  };
+};
+
+const getRequestLoading = () => {
+  return {
+    type: GET_REQUEST_LOADING,
   };
 };
 
@@ -59,7 +66,8 @@ export {
   removePost, 
   retrievePosts, 
   sendRequest, 
-  getRequest, 
+  getRequestRetrieving, 
+  getRequestLoading,
   uppendPosts, 
   loadPosts 
 };

@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import { data } from './data';
+import { initialData } from './utils/initialData';
 import { retrievePosts, sendRequest } from './features/actions';
 import { allPostsReducer } from './features/allPosts/AllPosts';
 
@@ -19,7 +19,7 @@ import { allPostsReducer } from './features/allPosts/AllPosts';
 
 export const store = createStore(allPostsReducer);
 
-store.dispatch(retrievePosts(data));
+store.dispatch(retrievePosts(initialData));
 
 const pageId = 1;
 store.dispatch(sendRequest(pageId));

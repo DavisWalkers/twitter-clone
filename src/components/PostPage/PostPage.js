@@ -14,7 +14,7 @@ export const PostPage = () => {
   const currentPost = isFetching ? allPosts[0] : allPosts.filter(post => post.id === id)[0];
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth'});
+    window.scrollTo({ top: 0 });
   }, []);
 
   return (
@@ -33,6 +33,7 @@ export const PostPage = () => {
         <p className='post__description'>
           {currentPost.body}  
         </p>
+        <hr className='post__separator' />
       </div>
     </section>
   );
