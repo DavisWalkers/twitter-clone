@@ -1,6 +1,8 @@
 const ADD_POST = 'allPosts/addPost';
 const REMOVE_POST = 'allPosts/removePost';
+const RETRIEVE_POSTS = 'allPosts/retrievePosts';
 const LOAD_POSTS = 'allPosts/loadPosts';
+const UPPEND_POSTS = 'allPosts/uppendPosts';
 const SEND_REQUEST = 'allPosts/sendRequest';
 const GET_REQUEST = 'allPosts/getRequest';
 
@@ -18,17 +20,17 @@ const removePost = (id) => {
   };
 };
 
-const loadPosts = (posts) => {
+const retrievePosts = (posts) => {
   return {
-    type: LOAD_POSTS,
+    type: RETRIEVE_POSTS,
     payload: posts
   };
 };
 
-const sendRequest = (url) => {
+const sendRequest = (pageId) => {
   return {
     type: SEND_REQUEST,
-    payload: url
+    payload: pageId
   };
 };
 
@@ -38,4 +40,26 @@ const getRequest = () => {
   };
 };
 
-export { addPost, removePost, loadPosts, sendRequest, getRequest };
+const uppendPosts = (posts) => {
+  return {
+    type: UPPEND_POSTS,
+    payload: posts
+  }
+};
+
+const loadPosts = (pageId) => {
+  return {
+    type: LOAD_POSTS,
+    payload: pageId
+  };
+};
+
+export { 
+  addPost, 
+  removePost, 
+  retrievePosts, 
+  sendRequest, 
+  getRequest, 
+  uppendPosts, 
+  loadPosts 
+};

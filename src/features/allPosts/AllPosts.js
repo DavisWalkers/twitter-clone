@@ -1,6 +1,6 @@
 import { fetchData } from '../../utils/fetchData';
 import { store } from '../../store';
-import { getRequest, loadPosts } from '../actions';
+import { getRequest, retrievePosts, uppendPosts } from '../actions';
 
 const initialState = {
   allPosts: [],
@@ -21,24 +21,24 @@ export const allPostsReducer = (state = initialState, action) => {
           element => element.id !== action.payload
         )
       };
-    case 'allPosts/loadPosts':
+    case 'allPosts/retrievePosts':
       return {
         ...state,
         allPosts: action.payload
       };
-    case 'allPosts/loadImages':
+    case 'allPosts/loadPosts':
+      fetchData(action.payload).then(dataFetched => {
+        store.dispatch(uppendPosts(dataFetched));
+        store.dispatch(getRequest());
+      });
       return {
         ...state,
-        allPosts: state.allPosts.map(
-          element => {
-            action.payload.forEach(imgSrc => {
-              return {
-                ...element,
-                img: imgSrc
-              };
-            });
-          }
-        )
+        isFetching: true,
+      };
+    case 'allPosts/uppendPosts':
+      return {
+        ...state,
+        allPosts: [...state.allPosts, ...action.payload]
       };
     case 'allPosts/getRequest':
       return {
@@ -46,8 +46,9 @@ export const allPostsReducer = (state = initialState, action) => {
         isFetching: false
       };
     case 'allPosts/sendRequest':
+      console.log(action.payload);
       fetchData(action.payload).then(dataFetched => {
-        store.dispatch(loadPosts(dataFetched));
+        store.dispatch(retrievePosts(dataFetched));
         store.dispatch(getRequest());
       });
       return {

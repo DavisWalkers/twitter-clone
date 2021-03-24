@@ -17,5 +17,5 @@ export const Main = () => {
           </Route>
         </Switch>
     </main>
-  )
-}
+  );
+};

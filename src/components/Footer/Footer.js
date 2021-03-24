@@ -1,19 +1,21 @@
+import { NavLink } from 'react-router-dom';
 import './Footer.scss';
 
-export const Footer = (props) => {
+export const Footer = () => {
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className='footer'>
       <div className='container footer__container'>
-        <a href='#' className='footer__logo'>Blog</a>
+        <NavLink onClick={handleClick} to='/' className='footer__logo'>Blog</NavLink>
         <ul className='footer__list'>
           <li className='footer__item'>
-            <a href='#' className='footer__link'>Twitter</a>
+            <a href='https://twitter.com' target='_blank' className='footer__link'>Twitter</a>
           </li>
           <li className='footer__item'>
-            <a href='#' className='footer__link'>LinkedIn</a>
-          </li>
-          <li className='footer__item'>
-            <a href='#' className='footer__link'>RSS</a>
+            <a href='https://web.telegram.org' target='_blank' className='footer__link'>Telegram</a>
           </li>
         </ul>
         <p className='footer__copyrights'>
@@ -23,5 +25,5 @@ export const Footer = (props) => {
         </p>
       </div>
     </footer>
-  )
-}
+  );
+};

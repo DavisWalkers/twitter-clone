@@ -1,10 +1,12 @@
+@import "../../styles/utils/variables";
+
 .dot-elastic {
   position: relative;
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
+  background-color: $white;
+  color: $white;
   animation: dotElastic 1s infinite linear;
 }
 
@@ -20,8 +22,8 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
+  background-color: $white;
+  color: $white;
   animation: dotElasticBefore 1s infinite linear;
 }
 
@@ -30,8 +32,8 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
+  background-color: $white;
+  color: $white;
   animation: dotElasticAfter 1s infinite linear;
 }
 

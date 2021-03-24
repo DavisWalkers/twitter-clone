@@ -15,6 +15,6 @@ export const data = [
     id: 2,
     title: 'Fetching',
     body: 'Fetching', 
-    img: 'https://picsum.photos/500/800?sig=1'
+    img: 'https://picsum.photos/500/800?sig=2'
   }
 ];

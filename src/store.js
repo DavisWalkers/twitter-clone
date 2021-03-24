@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
 import { data } from './data';
-import { loadPosts, sendRequest } from './features/actions';
+import { retrievePosts, sendRequest } from './features/actions';
 import { allPostsReducer } from './features/allPosts/AllPosts';
 
 // Example state of store
@@ -19,7 +19,7 @@ import { allPostsReducer } from './features/allPosts/AllPosts';
 
 export const store = createStore(allPostsReducer);
 
-store.dispatch(loadPosts(data));
+store.dispatch(retrievePosts(data));
 
-const url = 'https://gorest.co.in/public-api/posts';
-store.dispatch(sendRequest(url));
+const pageId = 1;
+store.dispatch(sendRequest(pageId));

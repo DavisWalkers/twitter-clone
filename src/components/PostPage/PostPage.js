@@ -27,9 +27,9 @@ export const PostPage = () => {
             src={currentPost.img}
           />}
         </div>
-        <h2 className='post__header'>
+        <h1 className='post__header'>
           {currentPost.title}
-        </h2>
+        </h1>
         <p className='post__description'>
           {currentPost.body}  
         </p>

@@ -27,5 +27,5 @@ export const SmallArticle = (props) => {
         </div>
       </Link>
     </div>
-  )
-}
+  );
+};
