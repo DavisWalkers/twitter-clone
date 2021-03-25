@@ -1,6 +1,5 @@
 import { useDispatch } from 'react-redux';
 import { loadPosts } from '../../features/actions';
-import './ButtonMore.scss';
 
 export const ButtonMore = () => {
   const dispatch = useDispatch();
@@ -14,7 +13,7 @@ export const ButtonMore = () => {
   
   return (
     <button 
-      className='button-more' 
+      className='button' 
       onClick={(e) => {
         const newPage = updateDataPage(e);
         dispatch(loadPosts(newPage));

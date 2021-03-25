@@ -1,12 +1,12 @@
 import { fetchData } from '../../utils/fetchData';
 import { store } from '../../store';
-import { 
-  addPost, 
+import {  
   getRequestLoading, 
   getRequestRetrieving, 
   retrievePosts, 
   uppendPosts 
 } from '../actions';
+import { getFromLS } from '../../utils/localStorage';
 
 const initialState = {
   allPosts: [],
@@ -46,7 +46,7 @@ export const allPostsReducer = (state = initialState, action) => {
         ...state,
         isFetching: false
       };
-    case 'allPosts/getRequestRetrieving':
+    case 'allPosts/getRequestLoading':
       return {
         ...state,
         isLoadingMore: false
@@ -54,17 +54,33 @@ export const allPostsReducer = (state = initialState, action) => {
     case 'allPosts/sendRequest':
       fetchData(action.payload).then(dataFetched => {
         store.dispatch(retrievePosts(dataFetched));
+        store.dispatch(uppendPosts(getFromLS()));
         store.dispatch(getRequestRetrieving());
       });
       return {
         ...state,
         isFetching: true,
       };
+    case 'allPosts/removePost':
+      return {
+        ...state,
+        allPosts: state.allPosts.filter(element => {
+          return element.id !== action.payload;
+        }),
+        myPosts: state.myPosts.filter(element => {
+          return element.id !== action.payload;
+        })
+      }
     case 'myPosts/addPost':
       return {
         ...state,
         myPosts: [...state.myPosts, action.payload]
       };
+    case 'myPosts/uploadPosts':
+      return {
+        ...state,
+        myPosts: action.payload
+      }
     default: 
       return {
         ...state

@@ -6,6 +6,8 @@ const SEND_REQUEST = 'allPosts/sendRequest';
 const GET_REQUEST_RETRIEVING = 'allPosts/getRequestRetrieving';
 const GET_REQUEST_LOADING = 'allPosts/getRequestLoading'
 const ADD_MY_POST = 'myPosts/addPost';
+const UPLOAD_MY_POSTS = 'myPosts/uploadPosts';
+const REMOVE_POST = 'allPosts/removePost';
 
 const addPost = (post) => {
   return {
@@ -61,6 +63,20 @@ const addMyPost = (post) => {
   };
 };
 
+const uploadMyPosts = (posts) => {
+  return {
+    type: UPLOAD_MY_POSTS,
+    payload: posts
+  };
+};
+
+const removePost = (id) => {
+  return {
+    type: REMOVE_POST,
+    payload: id
+  };
+};
+
 export { 
   addPost, 
   retrievePosts, 
@@ -69,5 +85,7 @@ export {
   getRequestLoading,
   uppendPosts, 
   loadPosts,
-  addMyPost
+  addMyPost,
+  uploadMyPosts,
+  removePost
 };

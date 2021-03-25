@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin-top: 30px;
   padding: 0 160px;
 }
@@ -47,4 +48,8 @@
 .post__separator {
   margin: 60px 0;
   width: 100%;
+}
+
+.post__delete-button-wrapper {
+  margin-bottom: 60px;
 }

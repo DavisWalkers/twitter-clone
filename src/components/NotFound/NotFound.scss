@@ -1,0 +1,19 @@
+.not-found__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px 160px;
+}
+
+.not-found__header {
+  font-size: 42px;
+}
+
+.not-found__description {
+  font-family: "SF Mono", sans-serif;
+  font-size: 24px;
+}
+
+.not-found__button {
+  margin-top: 50px;
+}

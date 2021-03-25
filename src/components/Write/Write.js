@@ -1,15 +1,13 @@
-import { useDispatch, useSelector, useStore } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import TextareaAutosize from 'react-textarea-autosize';
 import { addMyPost, addPost } from '../../features/actions';
-import { allPostsSelector } from '../../features/allPosts/allPostsSelector';
 import { createPostObjects } from '../../utils/createPostObject';
 import { extractFormParams } from '../../utils/extractFormParams';
+import { updateLS } from '../../utils/localStorage';
 import './Write.scss';
 
 export const Write = () => {
   const dispatch = useDispatch();
-  const store = useStore();
-  const allPosts = useSelector(allPostsSelector);
 
   const activatePopup = () => {
     const popup = document.querySelector('.write__popup');
@@ -18,7 +16,9 @@ export const Write = () => {
 
   const deactivatePopup = () => {
     const popup = document.querySelector('.write__popup');
-    popup.style.display = 'none';
+    if (popup) {
+      popup.style.display = 'none';
+    }
   };
 
   const handleSubmit = (e) => {
@@ -32,7 +32,7 @@ export const Write = () => {
     dispatch(addPost(post));
     activatePopup();
     setTimeout(deactivatePopup, 5000);
-    
+    updateLS(post);
   };
 
   return (
@@ -60,7 +60,7 @@ export const Write = () => {
             maxLength='3000'
             required
           />
-          <button className='write__button' type='submit'>Post</button>
+          <button className='button write__button' type='submit'>Post</button>
         </form>
       </div>
     </section>

@@ -6,6 +6,7 @@ import {
 import { PostPage } from '../PostPage/PostPage';
 import { Write } from '../Write/Write';
 import { MyPosts } from '../MyPosts/MyPosts';
+import { NotFound } from '../NotFound/NotFound';
 
 export const Main = () => {
   return (
@@ -22,6 +23,9 @@ export const Main = () => {
           </Route>
           <Route path='/my-posts'>
             <MyPosts />
+          </Route>
+          <Route>
+            <NotFound />
           </Route>
         </Switch>
     </main>

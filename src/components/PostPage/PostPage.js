@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useLocation } from "react-router";
 import { allPostsSelector } from "../../features/allPosts/allPostsSelector";
 import { isFetchingSelector } from "../../features/allPosts/isFetchingSelector";
+import { DeletePostButton } from "../DeletePostButton/DeletePostButton";
 import { Loader } from "../Loader/Loader";
 import './PostPage.scss';
 
@@ -38,6 +39,10 @@ export const PostPage = () => {
           {currentPost.body}  
         </p>
         <hr className='post__separator' />
+        {(id >= 10000) && 
+        <div className='post__delete-button-wrapper'>
+          <DeletePostButton id={id} />
+        </div>}
       </div>
     </section>
   );
