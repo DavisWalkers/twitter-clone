@@ -21,7 +21,7 @@ const deleteItemFromLS = (id) => {
   addToLS(newPosts);
 }
 
-const updateLS = (post) => {
+const uppendLS = (post) => {
   const posts = getFromLS();
   deleteLS();
   posts.push(post);
@@ -32,11 +32,25 @@ const setLS = () => {
   localStorage.setItem(PAGE, JSON.stringify([]));
 };
 
+const updateLS = (post) => {
+  const posts = getFromLS();
+  deleteLS();
+  const newPosts = posts.map(element => {
+    if (element.id === post.id) {
+      return post;
+    } else {
+      return element;
+    }
+  });
+  addToLS(newPosts);
+};
+
 export {
   addToLS,
   getFromLS,
   deleteLS,
-  updateLS,
+  uppendLS,
   setLS,
-  deleteItemFromLS
+  deleteItemFromLS,
+  updateLS
 };

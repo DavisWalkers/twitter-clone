@@ -1,9 +1,10 @@
 import { useDispatch } from 'react-redux';
 import TextareaAutosize from 'react-textarea-autosize';
 import { addMyPost, addPost } from '../../features/actions';
+import { clearForm } from '../../utils/clearForm';
 import { createPostObjects } from '../../utils/createPostObject';
 import { extractFormParams } from '../../utils/extractFormParams';
-import { updateLS } from '../../utils/localStorage';
+import { uppendLS } from '../../utils/localStorage';
 import './Write.scss';
 
 export const Write = () => {
@@ -32,7 +33,8 @@ export const Write = () => {
     dispatch(addPost(post));
     activatePopup();
     setTimeout(deactivatePopup, 5000);
-    updateLS(post);
+    uppendLS(post);
+    clearForm(e.target);
   };
 
   return (

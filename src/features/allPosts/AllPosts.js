@@ -81,6 +81,24 @@ export const allPostsReducer = (state = initialState, action) => {
         ...state,
         myPosts: action.payload
       }
+    case 'myPosts/updatePost':
+      return {
+        ...state, 
+        myPosts: state.myPosts.map(post => {
+          if (post.id === action.payload.id) {
+            return action.payload;
+          } else {
+            return post;
+          }
+        }),
+        allPosts: state.allPosts.map(post => {
+          if (post.id === action.payload.id) {
+            return action.payload;
+          } else {
+            return post;
+          }
+        })
+      };
     default: 
       return {
         ...state

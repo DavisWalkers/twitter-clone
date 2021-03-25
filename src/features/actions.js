@@ -8,6 +8,7 @@ const GET_REQUEST_LOADING = 'allPosts/getRequestLoading'
 const ADD_MY_POST = 'myPosts/addPost';
 const UPLOAD_MY_POSTS = 'myPosts/uploadPosts';
 const REMOVE_POST = 'allPosts/removePost';
+const UPDATE_POST = 'myPosts/updatePost';
 
 const addPost = (post) => {
   return {
@@ -77,6 +78,13 @@ const removePost = (id) => {
   };
 };
 
+const updatePost = (post) => {
+  return {
+    type: UPDATE_POST,
+    payload: post
+  };
+};
+
 export { 
   addPost, 
   retrievePosts, 
@@ -87,5 +95,6 @@ export {
   loadPosts,
   addMyPost,
   uploadMyPosts,
-  removePost
+  removePost,
+  updatePost
 };

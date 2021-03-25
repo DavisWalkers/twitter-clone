@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router";
+import { Link } from "react-router-dom";
 import { allPostsSelector } from "../../features/allPosts/allPostsSelector";
 import { isFetchingSelector } from "../../features/allPosts/isFetchingSelector";
 import { DeletePostButton } from "../DeletePostButton/DeletePostButton";
@@ -12,6 +13,7 @@ export const PostPage = () => {
   const allPosts = useSelector(allPostsSelector);
   const isFetching = useSelector(isFetchingSelector);
   const id = parseInt(useLocation().search.slice(1));
+  const urlEdit = `/edit-post?id=${id}`;
   let currentPost = isFetching ? allPosts[0] : allPosts.filter(post => post.id === id)[0];
 
   if (!currentPost) {
@@ -40,8 +42,10 @@ export const PostPage = () => {
         </p>
         <hr className='post__separator' />
         {(id >= 10000) && 
-        <div className='post__delete-button-wrapper'>
+        <div className='post__buttons-wrapper'>
           <DeletePostButton id={id} />
+          <div className='post-wrapper-separator'></div>
+          <Link to={urlEdit} className='button'>Edit post</Link>
         </div>}
       </div>
     </section>

@@ -13,7 +13,7 @@ export const DeletePostButton = (props) => {
     if (window.confirm('Are you sure?')) {
       dispatch(removePost(id));
       deleteItemFromLS(id);
-      history.push('/');
+      history.push('/my-posts');
     } 
   };
   

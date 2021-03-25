@@ -50,6 +50,12 @@
   width: 100%;
 }
 
-.post__delete-button-wrapper {
+.post__buttons-wrapper {
+  display: flex;
   margin-bottom: 60px;
+}
+
+.post-wrapper-separator {
+  height: 60px;
+  margin: 0 10px;
 }
