@@ -24,6 +24,8 @@ export const SmallArticle = (props) => {
           <h2 className='small-article__header'>
             {data.title}
           </h2>
+          {(id >= 10000) && 
+            <div className='small-article__my-post'>My post</div>}
         </div>
       </Link>
     </div>

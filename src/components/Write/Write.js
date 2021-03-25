@@ -24,7 +24,7 @@ export const Write = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const id = Math.floor(Math.random() * 10) + 10000;
+    const id = Math.floor(Math.random() * 1000000) + 10000;
     const { title, body } = extractFormParams(e.target);
     const post = createPostObjects(id, title, body);
 

@@ -3,10 +3,11 @@
 .small-article__wrapper {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   padding: 10px;
   border-radius: 25px;
-  height: 100%;
+  min-height: 270px;
 
   box-shadow: 0px 5px 10px rgba($black, .12);
 
@@ -50,4 +51,9 @@
   font-family: "SF Mono", sans-serif;
   font-size: 18px;
   text-align: center;
+}
+
+.small-article__my-post {
+  font-size: 12px;
+  opacity: .3;
 }
