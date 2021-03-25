@@ -12,6 +12,16 @@ export const Header = () => {
                   Blog
                 </NavLink>
               </li>
+              <li className='header__item'>
+                <NavLink to='/write' activeClassName='header__link--active' className='header__link'>
+                    Write
+                </NavLink>
+              </li>
+              <li className='header__item'>
+                <NavLink to='/my-posts' activeClassName='header__link--active' className='header__link'>
+                    My Posts
+                </NavLink>
+              </li>
             </ul>
           </nav>
         </div>

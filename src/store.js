@@ -14,7 +14,8 @@ import { allPostsReducer } from './features/allPosts/AllPosts';
 //     },
 //     ...
 //   ],
-//   isFetching: false
+//   isFetching: false,
+//   isLoadingMore: false
 // }
 
 export const store = createStore(allPostsReducer);

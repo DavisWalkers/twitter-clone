@@ -11,7 +11,11 @@ export const PostPage = () => {
   const allPosts = useSelector(allPostsSelector);
   const isFetching = useSelector(isFetchingSelector);
   const id = parseInt(useLocation().search.slice(1));
-  const currentPost = isFetching ? allPosts[0] : allPosts.filter(post => post.id === id)[0];
+  let currentPost = isFetching ? allPosts[0] : allPosts.filter(post => post.id === id)[0];
+
+  if (!currentPost) {
+    currentPost = { title: 'No such post', body: '', img: '' };
+  }
 
   useEffect(() => {
     window.scrollTo({ top: 0 });

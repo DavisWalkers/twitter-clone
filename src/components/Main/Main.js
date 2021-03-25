@@ -4,6 +4,8 @@ import {
   Route
 } from 'react-router-dom';
 import { PostPage } from '../PostPage/PostPage';
+import { Write } from '../Write/Write';
+import { MyPosts } from '../MyPosts/MyPosts';
 
 export const Main = () => {
   return (
@@ -14,6 +16,12 @@ export const Main = () => {
           </Route>
           <Route path='/post'>
             <PostPage />
+          </Route>
+          <Route path='/write'>
+            <Write />
+          </Route>
+          <Route path='/my-posts'>
+            <MyPosts />
           </Route>
         </Switch>
     </main>

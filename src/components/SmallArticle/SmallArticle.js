@@ -1,13 +1,11 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { allPostsSelector } from '../../features/allPosts/allPostsSelector';
 import { isFetchingSelector } from '../../features/allPosts/isFetchingSelector';
 import { Loader } from '../Loader/Loader';
 import './SmallArticle.scss';
 
 export const SmallArticle = (props) => {
   const isFetching = useSelector(isFetchingSelector);
-  const allPosts = useSelector(allPostsSelector);
   const data = props.data;
   const id = props.id;
   const url = `/post?${id}`;

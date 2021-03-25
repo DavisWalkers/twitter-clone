@@ -1,11 +1,18 @@
 import { fetchData } from '../../utils/fetchData';
 import { store } from '../../store';
-import { getRequestLoading, getRequestRetrieving, retrievePosts, uppendPosts } from '../actions';
+import { 
+  addPost, 
+  getRequestLoading, 
+  getRequestRetrieving, 
+  retrievePosts, 
+  uppendPosts 
+} from '../actions';
 
 const initialState = {
   allPosts: [],
+  myPosts: [],
   isFetching: false,
-  isLoading: false
+  isLoadingMore: false
 };
 
 export const allPostsReducer = (state = initialState, action) => {
@@ -14,13 +21,6 @@ export const allPostsReducer = (state = initialState, action) => {
       return {
         ...state,
         allPosts: [...state.allPosts, action.payload]
-      };
-    case 'allPosts/removePost':
-      return {
-        ...state,
-        allPosts: state.allPosts.filter(
-          element => element.id !== action.payload
-        )
       };
     case 'allPosts/retrievePosts':
       return {
@@ -34,7 +34,7 @@ export const allPostsReducer = (state = initialState, action) => {
       });
       return {
         ...state,
-        isLoading: true,
+        isLoadingMore: true,
       };
     case 'allPosts/uppendPosts':
       return {
@@ -49,10 +49,9 @@ export const allPostsReducer = (state = initialState, action) => {
     case 'allPosts/getRequestRetrieving':
       return {
         ...state,
-        isLoading: false
+        isLoadingMore: false
       };
     case 'allPosts/sendRequest':
-      console.log(action.payload);
       fetchData(action.payload).then(dataFetched => {
         store.dispatch(retrievePosts(dataFetched));
         store.dispatch(getRequestRetrieving());
@@ -60,6 +59,11 @@ export const allPostsReducer = (state = initialState, action) => {
       return {
         ...state,
         isFetching: true,
+      };
+    case 'myPosts/addPost':
+      return {
+        ...state,
+        myPosts: [...state.myPosts, action.payload]
       };
     default: 
       return {

@@ -1,11 +1,9 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { loadPosts } from '../../features/actions';
-import { allPostsSelector } from '../../features/allPosts/allPostsSelector';
 import './ButtonMore.scss';
 
 export const ButtonMore = () => {
   const dispatch = useDispatch();
-  const allPosts = useSelector(allPostsSelector);
 
   const updateDataPage = (e) => {
     const btn = e.target;
