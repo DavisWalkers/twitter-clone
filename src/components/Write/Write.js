@@ -31,9 +31,9 @@ export const Write = () => {
 
     dispatch(addMyPost(post));
     dispatch(addPost(post));
+    uppendLS(post);
     activatePopup();
     setTimeout(deactivatePopup, 5000);
-    uppendLS(post);
     clearForm(e.target);
   };
 

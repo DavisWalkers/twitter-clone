@@ -5,9 +5,10 @@ import { Loader } from '../Loader/Loader';
 import './SmallArticle.scss';
 
 export const SmallArticle = (props) => {
-  const isFetching = useSelector(isFetchingSelector);
   const data = props.data;
   const id = props.id;
+  const isFetching = useSelector(isFetchingSelector);
+  const isUserPost = id >= 10000;
   const url = `/post?${id}`;
  
   return (
@@ -24,7 +25,7 @@ export const SmallArticle = (props) => {
           <h2 className='small-article__header'>
             {data.title}
           </h2>
-          {(id >= 10000) && 
+          {!!isUserPost && 
             <div className='small-article__my-post'>My post</div>}
         </div>
       </Link>

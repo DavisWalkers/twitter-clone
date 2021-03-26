@@ -11,8 +11,9 @@ import './PostPage.scss';
 
 export const PostPage = () => {
   const allPosts = useSelector(allPostsSelector);
-  const isFetching = useSelector(isFetchingSelector);
   const id = parseInt(useLocation().search.slice(1));
+  const isFetching = useSelector(isFetchingSelector);
+  const isUserPost = id >= 10000;
   const urlEdit = `/edit-post?id=${id}`;
   let currentPost = isFetching ? allPosts[0] : allPosts.filter(post => post.id === id)[0];
 
@@ -41,10 +42,10 @@ export const PostPage = () => {
           {currentPost.body}  
         </p>
         <hr className='post__separator' />
-        {(id >= 10000) && 
+        {!!isUserPost && 
         <div className='post__buttons-wrapper'>
           <DeletePostButton id={id} />
-          <div className='post-wrapper-separator'></div>
+          <div className='post__wrapper-separator'></div>
           <Link to={urlEdit} className='button'>Edit post</Link>
         </div>}
       </div>

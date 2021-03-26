@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { myPostsSelector } from '../../features/allPosts/myPostsSelector';
 import { ArticlesLayout } from '../ArticlesLayout/ArticlesLayout';
@@ -5,6 +6,10 @@ import './MyPosts.scss';
 
 export const MyPosts = () => {
   const myPostsLength = useSelector(myPostsSelector).length;
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
  
   return (
     <section className='my-posts'>

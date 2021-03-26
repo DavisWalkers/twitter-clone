@@ -1,24 +1,21 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loadPosts } from '../../features/actions';
 
 export const ButtonMore = () => {
   const dispatch = useDispatch();
-
-  const updateDataPage = (e) => {
-    const btn = e.target;
-    const newPage = parseInt(btn.dataset.page) + 1;
-    btn.dataset.page = newPage;
-    return newPage;
-  };
+  const [page, setPage] = useState(1);
   
+  const handleClick = () => {
+    setPage(page + 1);
+    dispatch(loadPosts(page));
+  };
+
   return (
     <button 
       className='button' 
-      onClick={(e) => {
-        const newPage = updateDataPage(e);
-        dispatch(loadPosts(newPage));
-      }} 
-      data-page='1' 
+      onClick={handleClick} 
+      data-page={page}
       type='button'
     >
       More Posts

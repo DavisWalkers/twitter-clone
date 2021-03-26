@@ -10,31 +10,3 @@
   align-items: center;
   height: 80px;
 }
-
-.header__list {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-  margin: 0;
-
-  list-style: none;
-}
-
-.header__link {
-  font-family: 'New York Small', serif;
-  font-size: 20px;
-  line-height: 1.7;
-  text-transform: uppercase;
-
-  color: $black;
-}
-
-.header__item:not(:last-child) {
-  margin-right: 30px;
-}
-
-.header__link--active {
-  padding: 26px 0;
-  border-bottom: 2px solid $black;
-}

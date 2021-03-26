@@ -1,5 +1,6 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useHistory, useLocation } from 'react-router';
+import { Redirect, useLocation } from 'react-router';
 import TextareaAutosize from 'react-textarea-autosize';
 import { updatePost } from '../../features/actions';
 import { myPostsSelector } from '../../features/allPosts/myPostsSelector';
@@ -9,15 +10,10 @@ import { updateLS } from '../../utils/localStorage';
 import './EditPost.scss';
 
 export const EditPost = () => {
-  const history = useHistory();
   const id = parseInt(useLocation().search.slice(1).split('=')[1]);
   const post = useSelector(myPostsSelector).filter(post => {
     return post.id === id;
   })[0];
-
-  if (!post) {
-    history.push('/not-found');
-  }
 
   const dispatch = useDispatch();
 
@@ -40,11 +36,15 @@ export const EditPost = () => {
     const post = createPostObjects(id, title, body);
 
     dispatch(updatePost(post));
+    updateLS(post);
     activatePopup();
     setTimeout(deactivatePopup, 5000);
-    updateLS(post);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
 
   return (
     <section className='edit-post'>

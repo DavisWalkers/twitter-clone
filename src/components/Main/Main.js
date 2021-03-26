@@ -1,3 +1,4 @@
+import './Main.scss';
 import { Articles } from '../Articles/Articles';
 import {
   Switch,
@@ -8,30 +9,32 @@ import { Write } from '../Write/Write';
 import { MyPosts } from '../MyPosts/MyPosts';
 import { NotFound } from '../NotFound/NotFound';
 import { EditPost } from '../EditPost/EditPost';
+import { ButtonScrollTop } from '../ButtonScrollTop/ButtonScrollTop';
 
 export const Main = () => {
   return (
     <main className='main'>
-        <Switch>
-          <Route exact path='/'>
-            <Articles />
-          </Route>
-          <Route path='/post'>
-            <PostPage />
-          </Route>
-          <Route path='/write'>
-            <Write />
-          </Route>
-          <Route path='/my-posts'>
-            <MyPosts />
-          </Route>
-          <Route path='/edit-post'>
-            <EditPost />
-          </Route>
-          <Route>
-            <NotFound />
-          </Route>
-        </Switch>
+      <Switch>
+        <Route exact path='/'>
+          <Articles />
+        </Route>
+        <Route path='/post'>
+          <PostPage />
+        </Route>
+        <Route path='/write'>
+          <Write />
+        </Route>
+        <Route path='/my-posts'>
+          <MyPosts />
+        </Route>
+        <Route path='/edit-post'>
+          <EditPost />
+        </Route>
+        <Route>
+          <NotFound />
+        </Route>
+      </Switch>
+      <ButtonScrollTop />
     </main>
   );
 };

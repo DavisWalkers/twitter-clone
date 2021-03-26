@@ -7,12 +7,12 @@ import { store } from '../../store';
 
 export const App = () => {
   return (
-    <Provider store={store}>
-      <React.Fragment>
+    <React.Fragment>
+      <Provider store={store}>
         <Header />
         <Main />
         <Footer />
-      </React.Fragment>
-    </Provider>
+      </Provider>
+    </React.Fragment>
   );
 };
