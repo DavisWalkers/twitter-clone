@@ -41,7 +41,6 @@ export const Articles = () => {
         <BigArticle />
         <p className='articles__header'>All articles</p>
         <ArticlesLayout isAll='true' />
-        
         <div className='articles__button-wrapper'>
           <LoadMore setObserver={setObserver} observer={observer} />
         </div>

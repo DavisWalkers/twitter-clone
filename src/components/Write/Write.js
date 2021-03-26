@@ -1,3 +1,4 @@
+import './Write.scss';
 import { useDispatch } from 'react-redux';
 import TextareaAutosize from 'react-textarea-autosize';
 import { addMyPost, addPost } from '../../features/actions';
@@ -5,7 +6,8 @@ import { clearForm } from '../../utils/clearForm';
 import { createPostObjects } from '../../utils/createPostObject';
 import { extractFormParams } from '../../utils/extractFormParams';
 import { uppendLS } from '../../utils/localStorage';
-import './Write.scss';
+import { Formik } from 'formik';
+import * as yup from 'yup';
 
 export const Write = () => {
   const dispatch = useDispatch();
@@ -22,11 +24,8 @@ export const Write = () => {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
+  const createPost = ({ title, body }) => {
     const id = Math.floor(Math.random() * 1000000) + 10000;
-    const { title, body } = extractFormParams(e.target);
     const post = createPostObjects(id, title, body);
 
     dispatch(addMyPost(post));
@@ -34,8 +33,21 @@ export const Write = () => {
     uppendLS(post);
     activatePopup();
     setTimeout(deactivatePopup, 5000);
-    clearForm(e.target);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const formSchema = yup.object().shape({
+    title: yup.string()
+      .trim()
+      .min(1, 'Too Short')
+      .max(300, 'Too Long')
+      .required('Required'),
+    body: yup.string()
+      .trim()
+      .min(1, 'Too Short')
+      .max(3000, 'Too Long')
+      .required('Required')
+  });
 
   return (
     <section className='write'>
@@ -44,26 +56,52 @@ export const Write = () => {
       </div>
       <div className='container write__container'>
         <h1 className='write__header'>Tell us your thoughts</h1>
-        <form onSubmit={handleSubmit} className='write__form'>
-          <TextareaAutosize
-            className='write__input'
-            placeholder='Title'
-            id='title'
-            name='title'
-            maxLength='300'
-            required
-          />
-          <TextareaAutosize
-            className='write__input'
-            placeholder='Body'
-            id='body'
-            minRows='4'
-            name='body'
-            maxLength='3000'
-            required
-          />
-          <button className='button write__button' type='submit'>Post</button>
-        </form>
+        <Formik 
+          initialValues={{ title: '', body: '' }}
+          validationSchema={formSchema}
+          onSubmit={(values, { resetForm }) => {
+            createPost({ title: values.title, body: values.body });
+            values = { title: '', body: '' };
+            resetForm({});
+          }}
+        >
+          {({
+         values,
+         errors,
+         handleChange,
+         handleBlur,
+         handleSubmit,
+         isSubmitting,
+       }) => (
+          <form onSubmit={handleSubmit} className='write__form'>
+            {errors.title && <div className='write__error write__error--title'>
+                {errors.title}
+              </div>}
+            <TextareaAutosize
+              className='write__input'
+              placeholder='Title'
+              id='title'
+              name='title'
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.title}
+            />
+            <TextareaAutosize
+              className='write__input'
+              placeholder='Body'
+              minRows='4'
+              id='body'
+              name='body'
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.body}
+            />
+            {errors.body && <div className='write__error write__error--body'>
+                {errors.body}
+              </div>}
+            <button className='button write__button' type='submit' disabled={isSubmitting}>Post</button>
+          </form>)}
+        </Formik>
       </div>
     </section>
   );

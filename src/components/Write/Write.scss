@@ -61,7 +61,6 @@
 }
 
 .write__input:last-of-type {
-  border-top: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
@@ -72,4 +71,28 @@
 
 .write__button {
   margin-top: 50px;
+}
+
+.write__error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 99%;
+  height: 40px;
+  border: 1px solid $gray;
+  
+  color: $red;
+  background-color: $white;
+}
+
+.write__error--title {
+  border-bottom: 0;
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+}
+
+.write__error--body {
+  border-top: 0;
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 25px;
 }
