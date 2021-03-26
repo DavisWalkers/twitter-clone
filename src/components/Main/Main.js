@@ -1,4 +1,3 @@
-import './Main.scss';
 import { Articles } from '../Articles/Articles';
 import {
   Switch,

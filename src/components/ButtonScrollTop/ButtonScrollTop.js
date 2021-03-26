@@ -25,9 +25,10 @@ export const ButtonScrollTop = () => {
 
   return (
     <React.Fragment>
-      {!!visibility && <div className='button-scroll-top' onClick={handleClick}>
-        <div className='button-scroll-top__icon'></div>
-      </div>}
+      {!!visibility && 
+        <div className='button-scroll-top' onClick={handleClick}>
+          <div className='button-scroll-top__icon'></div>
+        </div>}
     </React.Fragment>
   );
 };
