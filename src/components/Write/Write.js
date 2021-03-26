@@ -6,31 +6,20 @@ import { createPostObjects } from '../../utils/createPostObject';
 import { uppendLS } from '../../utils/localStorage';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import { Popup } from '../Popup/Popup';
+import { useState } from 'react';
 
 export const Write = () => {
+  const [isVisiblePopup, setIsVisiblePopup] = useState(false);
   const dispatch = useDispatch();
 
-  const activatePopup = () => {
-    const popup = document.querySelector('.write__popup');
-    popup.style.display = 'flex';
-  };
-
-  const deactivatePopup = () => {
-    const popup = document.querySelector('.write__popup');
-    if (popup) {
-      popup.style.display = 'none';
-    }
-  };
-
-  const createPost = ({ title, body }) => {
+  const createPost = async ({ title, body }) => {
     const id = Math.floor(Math.random() * 1000000) + 10000;
     const post = createPostObjects(id, title, body);
 
     dispatch(addMyPost(post));
     dispatch(addPost(post));
     uppendLS(post);
-    activatePopup();
-    setTimeout(deactivatePopup, 5000);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -49,9 +38,11 @@ export const Write = () => {
 
   return (
     <section className='write'>
-      <div className='write__popup'>
-        <p className='write__popup-text'>Successfully added</p>
-      </div>
+      <Popup 
+        text='Successfully added' 
+        isVisible={isVisiblePopup} 
+        changeVisibility={setIsVisiblePopup}
+      />
       <div className='container write__container'>
         <h1 className='write__header'>Tell us your thoughts</h1>
         <Formik 
@@ -61,6 +52,7 @@ export const Write = () => {
             createPost({ title: values.title, body: values.body });
             values = { title: '', body: '' };
             resetForm({});
+            setIsVisiblePopup(true);
           }}
         >
           {({
@@ -97,7 +89,13 @@ export const Write = () => {
             {errors.body && <div className='write__error write__error--body'>
                 {errors.body}
               </div>}
-            <button className='button write__button' type='submit' disabled={isSubmitting}>Post</button>
+            <button 
+              className='button write__button' 
+              type='submit' 
+              disabled={isSubmitting}
+            >
+              Post
+            </button>
           </form>)}
         </Formik>
       </div>
