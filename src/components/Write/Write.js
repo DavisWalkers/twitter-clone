@@ -13,7 +13,7 @@ export const Write = () => {
   const [isVisiblePopup, setIsVisiblePopup] = useState(false);
   const dispatch = useDispatch();
 
-  const createPost = async ({ title, body }) => {
+  const createPost = ({ title, body }) => {
     const id = Math.floor(Math.random() * 1000000) + 10000;
     const post = createPostObjects(id, title, body);
 
@@ -55,7 +55,7 @@ export const Write = () => {
             setIsVisiblePopup(true);
           }}
         >
-          {({
+        {({
          values,
          errors,
          handleChange,

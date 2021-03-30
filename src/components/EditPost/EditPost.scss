@@ -27,7 +27,7 @@
 
 .edit-post__header {
   margin: 0;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
 }
 
 .edit-post__form {
@@ -71,5 +71,32 @@
 }
 
 .edit-post__button {
-  margin-top: 50px;
+  margin-top: 60px;
+}
+
+.edit-post__error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 99%;
+  height: 40px;
+  border: 1px solid $gray;
+  
+  font-family: "SF Mono", sans-serif;
+  
+  background-color: $white;
+}
+
+.edit-post__error--title {
+  margin-top: -40px;
+  border-bottom: 0;
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+}
+
+.edit-post__error--body {
+  margin-bottom: -40px;
+  border-top: 0;
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 25px;
 }

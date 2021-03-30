@@ -9,7 +9,7 @@
 
 .write__header {
   margin: 0;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
 }
 
 .write__form {
@@ -52,7 +52,7 @@
 }
 
 .write__button {
-  margin-top: 50px;
+  margin-top: 60px;
 }
 
 .write__error {
@@ -69,12 +69,14 @@
 }
 
 .write__error--title {
+  margin-top: -40px;
   border-bottom: 0;
   border-top-right-radius: 25px;
   border-top-left-radius: 25px;
 }
 
 .write__error--body {
+  margin-bottom: -40px;
   border-top: 0;
   border-bottom-right-radius: 25px;
   border-bottom-left-radius: 25px;
