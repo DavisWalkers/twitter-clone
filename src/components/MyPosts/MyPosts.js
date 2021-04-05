@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { myPostsSelector } from '../../features/allPosts/myPostsSelector';
+import { myPostsSelector } from '../../store/selectors/myPostsSelector';
 import { ArticlesLayout } from '../ArticlesLayout/ArticlesLayout';
 import './MyPosts.scss';
 

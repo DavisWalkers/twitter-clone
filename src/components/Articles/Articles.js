@@ -3,11 +3,9 @@ import { BigArticle } from '../BigArticle/BigArticle';
 import { ArticlesLayout } from '../ArticlesLayout/ArticlesLayout';
 import { LoadMore } from '../LoadMore/LoadMore';
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { loadPosts } from '../../features/actions';
+import { loadMoreData } from '../../utils/loadMoreData';
 
 export const Articles = () => {
-  const dispatch = useDispatch();
   const [page, setPage] = useState(1);
 
   const setObserver = (observer, ref) => {
@@ -20,13 +18,13 @@ export const Articles = () => {
     threshold: 1.0
   };
   
-  const callback = (entries, observer) => {
+  const callback = (entries) => {
+    setPage(page + 1);
     entries.forEach(entry => {
       if (entry.intersectionRatio === 1) {
-        dispatch(loadPosts(page));
+        loadMoreData(page);
       }
     });
-    setPage(page + 1);
   };
   
   const observer = new IntersectionObserver(callback, options);

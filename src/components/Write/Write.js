@@ -1,13 +1,13 @@
 import './Write.scss';
 import { useDispatch } from 'react-redux';
 import TextareaAutosize from 'react-textarea-autosize';
-import { addMyPost, addPost } from '../../features/actions';
 import { createPostObjects } from '../../utils/createPostObject';
 import { uppendLS } from '../../utils/localStorage';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { Popup } from '../Popup/Popup';
 import { useState } from 'react';
+import { postsActions } from '../../store/reducers/postsSlice';
 
 export const Write = () => {
   const [isVisiblePopup, setIsVisiblePopup] = useState(false);
@@ -17,8 +17,7 @@ export const Write = () => {
     const id = Math.floor(Math.random() * 1000000) + 10000;
     const post = createPostObjects(id, title, body);
 
-    dispatch(addMyPost(post));
-    dispatch(addPost(post));
+    dispatch(postsActions.addPost(post));
     uppendLS(post);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -50,7 +49,7 @@ export const Write = () => {
           validationSchema={formSchema}
           onSubmit={(values, { resetForm }) => {
             createPost({ title: values.title, body: values.body });
-            values = { title: '', body: '' };
+            // values = { title: '', body: '' };
             resetForm({});
             setIsVisiblePopup(true);
           }}

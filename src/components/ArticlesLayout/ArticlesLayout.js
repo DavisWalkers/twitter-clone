@@ -1,12 +1,12 @@
 import { useSelector } from 'react-redux';
 import { SmallArticle } from '../SmallArticle/SmallArticle';
-import { allPostsSelector } from '../../features/allPosts/allPostsSelector';
-import { myPostsSelector } from '../../features/allPosts/myPostsSelector';
+import { postsSelector } from '../../store/selectors/postsSelector';
+import { myPostsSelector } from '../../store/selectors/myPostsSelector';
 import './ArticlesLayout.scss';
 
 export const ArticlesLayout = (props) => {
   const isAll = (props.isAll === 'true');
-  const allPosts = useSelector(allPostsSelector).slice(1);
+  const allPosts = useSelector(postsSelector).slice(1);
   const myPosts = useSelector(myPostsSelector);
   const posts = isAll ? allPosts : myPosts;
 

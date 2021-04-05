@@ -1,4 +1,5 @@
 export const fetchData = async (page) => {
+  console.log(`https://gorest.co.in/public-api/posts?page=${page}`);
   const response = await fetch(`https://gorest.co.in/public-api/posts?page=${page}`);
   const data = await response.json();
   const posts = data.data.map(element => {

@@ -3,18 +3,18 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useLocation } from 'react-router';
 import TextareaAutosize from 'react-textarea-autosize';
-import { updatePost } from '../../features/actions';
-import { myPostsSelector } from '../../features/allPosts/myPostsSelector';
+import { postsSelector } from '../../store/selectors/postsSelector';
 import { createPostObjects } from '../../utils/createPostObject';
 import { updateLS } from '../../utils/localStorage';
 import * as yup from 'yup';
 import './EditPost.scss';
 import { Popup } from '../Popup/Popup';
+import { postsActions } from '../../store/reducers/postsSlice';
 
 export const EditPost = () => {
   const [isVisiblePopup, setIsVisiblePopup] = useState(false);
   const id = parseInt(useLocation().search.slice(1).split('=')[1]);
-  const post = useSelector(myPostsSelector).filter(post => {
+  const post = useSelector(postsSelector).filter(post => {
     return post.id === id;
   })[0];
 
@@ -36,7 +36,7 @@ export const EditPost = () => {
   const updatePostObject = ({ title, body }) => {
     const post = createPostObjects(id, title, body);
 
-    dispatch(updatePost(post));
+    dispatch(postsActions.updatePost(post));
     updateLS(post);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };

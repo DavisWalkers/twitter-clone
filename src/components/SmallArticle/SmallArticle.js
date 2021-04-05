@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { isFetchingSelector } from '../../features/allPosts/isFetchingSelector';
+import { isFetchingSelector } from '../../store/selectors/isFetchingSelector';
 import { Loader } from '../Loader/Loader';
 import './SmallArticle.scss';
 
@@ -17,10 +17,12 @@ export const SmallArticle = (props) => {
         <div className='small-article__wrapper'>
           <div className='small-article__img-wrapper'>
             {!!isFetching && <Loader />}
-            {!isFetching && <img 
-              className='small-article__img'
-              src={data.img}
-            />}
+            {!isFetching && 
+              <img 
+                className='small-article__img'
+                src={data.img}
+                alt='Post visual content'
+              />}
           </div>
           <h2 className='small-article__header'>
             {data.title}

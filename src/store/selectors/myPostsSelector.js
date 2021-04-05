@@ -1,0 +1,1 @@
+export const myPostsSelector = state => state.posts.filter(post => post.id >= 10000);
