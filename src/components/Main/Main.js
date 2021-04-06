@@ -17,7 +17,7 @@ export const Main = () => {
         <Route exact path='/'>
           <Articles />
         </Route>
-        <Route path='/post'>
+        <Route path='/post/:id'>
           <PostPage />
         </Route>
         <Route path='/write'>

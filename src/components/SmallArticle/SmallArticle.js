@@ -9,7 +9,7 @@ export const SmallArticle = (props) => {
   const id = props.id;
   const isFetching = useSelector(isFetchingSelector);
   const isUserPost = id >= 10000;
-  const url = `/post?${id}`;
+  const url = `/post/${id}`;
  
   return (
     <div className='small-article'>

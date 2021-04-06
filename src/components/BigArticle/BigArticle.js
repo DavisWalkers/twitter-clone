@@ -9,7 +9,7 @@ export const BigArticle = () => {
   const isFetching = useSelector(isFetchingSelector);
   const posts = useSelector(postsSelector);
   const bigPost = posts ? posts[0] : { title: '', body: '', id: 0 };
-  const url = `/post?${bigPost.id}`;
+  const url = `/post/${bigPost.id}`;
   
   return (
     <div className='big-article'>

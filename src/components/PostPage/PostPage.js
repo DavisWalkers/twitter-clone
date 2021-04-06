@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router";
+import { useLocation, useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { postsSelector } from "../../store/selectors/postsSelector";
 import { isFetchingSelector } from "../../store/selectors/isFetchingSelector";
@@ -10,12 +10,13 @@ import './PostPage.scss';
 
 
 export const PostPage = () => {
-  const allPosts = useSelector(postsSelector);
-  const id = parseInt(useLocation().search.slice(1));
+  const posts = useSelector(postsSelector);
+  const params = useParams();
+  const id = parseInt(params['id']);
   const isFetching = useSelector(isFetchingSelector);
   const isUserPost = id >= 10000;
   const urlEdit = `/edit-post/${id}`;
-  let currentPost = isFetching ? allPosts[0] : allPosts.filter(post => post.id === id)[0];
+  let currentPost = isFetching ? posts[0] : posts.filter(post => post.id === id)[0];
 
   if (!currentPost) {
     currentPost = { title: 'No such post', body: '', img: '' };
