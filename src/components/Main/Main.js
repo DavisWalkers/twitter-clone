@@ -26,7 +26,7 @@ export const Main = () => {
         <Route path='/my-posts'>
           <MyPosts />
         </Route>
-        <Route path='/edit-post'>
+        <Route path='/edit-post/:id'>
           <EditPost />
         </Route>
         <Route>

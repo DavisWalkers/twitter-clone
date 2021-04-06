@@ -1,12 +1,12 @@
 import './Articles.scss';
 import { BigArticle } from '../BigArticle/BigArticle';
 import { ArticlesLayout } from '../ArticlesLayout/ArticlesLayout';
-import { LoadMore } from '../LoadMore/LoadMore';
 import { useEffect, useState } from 'react';
+import { LoadMore } from '../LoadMore/LoadMore';
 import { loadMoreData } from '../../utils/loadMoreData';
 
 export const Articles = () => {
-  const [page, setPage] = useState(1);
+  const [pageNumber, setPageNumber] = useState(1);
 
   const setObserver = (observer, ref) => {
     observer.observe(ref);
@@ -18,11 +18,13 @@ export const Articles = () => {
     threshold: 1.0
   };
   
-  const callback = (entries) => {
-    setPage(page + 1);
+  const callback = (entries, observer) => {
+    setPageNumber(prevPageNumber => prevPageNumber + 1);
     entries.forEach(entry => {
       if (entry.intersectionRatio === 1) {
-        loadMoreData(page);
+        
+        loadMoreData(pageNumber, setPageNumber);
+        console.log(pageNumber);
       }
     });
   };

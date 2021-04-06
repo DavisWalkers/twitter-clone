@@ -1,7 +1,7 @@
 import { Formik } from 'formik';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useLocation } from 'react-router';
+import { Redirect, useParams } from 'react-router';
 import TextareaAutosize from 'react-textarea-autosize';
 import { postsSelector } from '../../store/selectors/postsSelector';
 import { createPostObjects } from '../../utils/createPostObject';
@@ -13,11 +13,11 @@ import { postsActions } from '../../store/reducers/postsSlice';
 
 export const EditPost = () => {
   const [isVisiblePopup, setIsVisiblePopup] = useState(false);
-  const id = parseInt(useLocation().search.slice(1).split('=')[1]);
-  const post = useSelector(postsSelector).filter(post => {
+  const params = useParams();
+  const id = parseInt(params['id']);
+  const post = useSelector(postsSelector).filter(post => { 
     return post.id === id;
   })[0];
-
   const dispatch = useDispatch();
 
   const formSchema = yup.object().shape({

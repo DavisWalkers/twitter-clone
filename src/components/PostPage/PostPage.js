@@ -14,7 +14,7 @@ export const PostPage = () => {
   const id = parseInt(useLocation().search.slice(1));
   const isFetching = useSelector(isFetchingSelector);
   const isUserPost = id >= 10000;
-  const urlEdit = `/edit-post?id=${id}`;
+  const urlEdit = `/edit-post/${id}`;
   let currentPost = isFetching ? allPosts[0] : allPosts.filter(post => post.id === id)[0];
 
   if (!currentPost) {
