@@ -3,9 +3,8 @@ import { postsActions } from "../store/reducers/postsSlice";
 import { store } from "../store/store";
 import { fetchData } from "./fetchData";
 
-export const loadMoreData = (pageId, setPageNumber) => {
+export const loadMoreData = (pageId,) => {
   fetchData(pageId).then(dataFetched => {
-    setPageNumber(pageId + 1);
     store.dispatch(postsActions.uppendPosts(dataFetched));
     store.dispatch(isLoadingMoreActions.setLoading(true));
   });

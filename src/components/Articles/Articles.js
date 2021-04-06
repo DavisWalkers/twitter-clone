@@ -6,7 +6,7 @@ import { LoadMore } from '../LoadMore/LoadMore';
 import { loadMoreData } from '../../utils/loadMoreData';
 
 export const Articles = () => {
-  const [pageNumber, setPageNumber] = useState(1);
+  const [pageNumber, setPageNumber] = useState(2);
 
   const setObserver = (observer, ref) => {
     observer.observe(ref);
@@ -19,12 +19,9 @@ export const Articles = () => {
   };
   
   const callback = (entries, observer) => {
-    setPageNumber(prevPageNumber => prevPageNumber + 1);
     entries.forEach(entry => {
       if (entry.intersectionRatio === 1) {
-        
-        loadMoreData(pageNumber, setPageNumber);
-        console.log(pageNumber);
+        setPageNumber((prevNumber) => prevNumber + 1);
       }
     });
   };
@@ -34,6 +31,10 @@ export const Articles = () => {
   useEffect(() => {
     window.scrollTo({ top: 0 });
   }, []);
+
+  useEffect(() => {
+    loadMoreData(pageNumber);
+  }, [pageNumber])
 
   return (
     <section className='articles'>
