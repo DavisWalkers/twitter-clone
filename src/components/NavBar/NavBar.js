@@ -7,7 +7,7 @@ export const NavBar = () => {
       <ul className='nav-bar__list'>
         <li className='nav-bar__item'>
           <NavLink exact to='/' activeClassName='nav-bar__link--active' className='nav-bar__link'>
-            Blog
+            Feed
           </NavLink>
         </li>
         <li className='nav-bar__item'>
