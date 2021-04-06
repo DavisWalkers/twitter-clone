@@ -1,24 +1,24 @@
 import { Formik } from 'formik';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useParams } from 'react-router';
+import { Redirect, useHistory, useParams } from 'react-router';
 import TextareaAutosize from 'react-textarea-autosize';
 import { postsSelector } from '../../store/selectors/postsSelector';
 import { createPostObjects } from '../../utils/createPostObject';
 import { updateLS } from '../../utils/localStorage';
 import * as yup from 'yup';
 import './EditPost.scss';
-import { Popup } from '../Popup/Popup';
 import { postsActions } from '../../store/reducers/postsSlice';
+import { store as notificationStore } from 'react-notifications-component';
 
 export const EditPost = () => {
-  const [isVisiblePopup, setIsVisiblePopup] = useState(false);
   const params = useParams();
   const id = parseInt(params['id']);
   const post = useSelector(postsSelector).filter(post => { 
     return post.id === id;
   })[0];
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const formSchema = yup.object().shape({
     title: yup.string()
@@ -38,6 +38,20 @@ export const EditPost = () => {
 
     dispatch(postsActions.updatePost(post));
     updateLS(post);
+    history.push('/my-posts');
+
+    notificationStore.addNotification({
+      title: "Successfully",
+      message: "Post edited!",
+      type: "success",
+      insert: "top",
+      container: "top-left",
+      dismiss: {
+        duration: 3000,
+        onScreen: false
+      }
+    });
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -47,11 +61,6 @@ export const EditPost = () => {
 
   return (
     <section className='edit-post'>
-      <Popup 
-        text='Successfully edited'
-        isVisible={isVisiblePopup}
-        changeVisibility={setIsVisiblePopup}
-      />
       <div className='container edit-post__container'>
         <h1 className='edit-post__header'>Edit post</h1>
         {!!post && 
@@ -60,7 +69,6 @@ export const EditPost = () => {
             validationSchema={formSchema}
             onSubmit={values => {
               updatePostObject({ title: values.title, body: values.body });
-              setIsVisiblePopup(true);
             }}
           >
           {({

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useLocation, useParams } from "react-router";
+import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { postsSelector } from "../../store/selectors/postsSelector";
 import { isFetchingSelector } from "../../store/selectors/isFetchingSelector";

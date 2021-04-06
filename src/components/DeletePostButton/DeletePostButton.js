@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { postsActions } from '../../store/reducers/postsSlice';
 import { deleteItemFromLS } from '../../utils/localStorage';
+import { store as notificationStore } from 'react-notifications-component';
 
 export const DeletePostButton = (props) => {
   const id = props.id;
@@ -14,6 +15,18 @@ export const DeletePostButton = (props) => {
       dispatch(postsActions.removePost(id));
       deleteItemFromLS(id);
       history.push('/my-posts');
+
+      notificationStore.addNotification({
+        title: "Successfully",
+        message: "Post deleted!",
+        type: "info",
+        insert: "top",
+        container: "top-left",
+        dismiss: {
+          duration: 3000,
+          onScreen: false
+        }
+      });
     } 
   };
   

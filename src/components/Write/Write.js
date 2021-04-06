@@ -5,12 +5,10 @@ import { createPostObjects } from '../../utils/createPostObject';
 import { uppendLS } from '../../utils/localStorage';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import { Popup } from '../Popup/Popup';
-import { useState } from 'react';
 import { postsActions } from '../../store/reducers/postsSlice';
+import { store as notificationStore } from 'react-notifications-component';
 
 export const Write = () => {
-  const [isVisiblePopup, setIsVisiblePopup] = useState(false);
   const dispatch = useDispatch();
 
   const createPost = ({ title, body }) => {
@@ -19,6 +17,19 @@ export const Write = () => {
 
     dispatch(postsActions.addPost(post));
     uppendLS(post);
+
+    notificationStore.addNotification({
+      title: "Successfully",
+      message: "Post added!",
+      type: "success",
+      insert: "top",
+      container: "top-left",
+      dismiss: {
+        duration: 3000,
+        onScreen: false
+      }
+    });
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -37,11 +48,6 @@ export const Write = () => {
 
   return (
     <section className='write'>
-      <Popup 
-        text='Successfully added' 
-        isVisible={isVisiblePopup} 
-        changeVisibility={setIsVisiblePopup}
-      />
       <div className='container write__container'>
         <h1 className='write__header'>Tell us your thoughts</h1>
         <Formik 
@@ -49,9 +55,7 @@ export const Write = () => {
           validationSchema={formSchema}
           onSubmit={(values, { resetForm }) => {
             createPost({ title: values.title, body: values.body });
-            // values = { title: '', body: '' };
             resetForm({});
-            setIsVisiblePopup(true);
           }}
         >
         {({
