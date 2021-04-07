@@ -1,6 +1,6 @@
-import { isLoadingMoreActions } from "../store/reducers/isLoadingMoreSlice";
-import { postsActions } from "../store/reducers/postsSlice";
-import { store } from "../store/store";
+import { isLoadingMoreActions } from "../redux/slices/isLoadingMoreSlice";
+import { postsActions } from "../redux/slices/postsSlice";
+import { store } from "../redux/store";
 import { fetchData } from "./fetchData";
 
 export const loadMoreData = (pageId) => {

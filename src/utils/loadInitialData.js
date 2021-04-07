@@ -1,6 +1,6 @@
-import { isFetchingActions } from "../store/reducers/isFetchingSlice";
-import { postsActions } from "../store/reducers/postsSlice";
-import { store } from "../store/store";
+import { isFetchingActions } from "../redux/slices/isFetchingSlice";
+import { postsActions } from "../redux/slices/postsSlice";
+import { store } from "../redux/store";
 import { fetchData } from "./fetchData";
 import { getFromLS } from "./localStorage";
 
@@ -11,4 +11,4 @@ export const loadInitialData = (pageId) => {
     store.dispatch(isFetchingActions.setFetch(false));
   });
   store.dispatch(isFetchingActions.setFetch(true));
-}
+};

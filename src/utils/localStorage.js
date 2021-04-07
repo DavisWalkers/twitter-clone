@@ -19,7 +19,7 @@ const deleteItemFromLS = (id) => {
   });
   deleteLS();
   addToLS(newPosts);
-}
+};
 
 const uppendLS = (post) => {
   const posts = getFromLS();
